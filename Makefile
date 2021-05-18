@@ -10,7 +10,7 @@ DOCKER = docker
 VAULT = vault-local vault-external
 KUBERNETES = k8s-common minikube k8s-aws
 JENKINS = jenkins
-.PHONY: info $(BASE) $(POSTGRESQL) $(MINICONDA) $(DOCKER) $(VAULT) $(KUBERNETES) $(JENKINS)
+.PHONY: info $(GIT) $(BASE) $(POSTGRESQL) $(MINICONDA) $(DOCKER) $(VAULT) $(KUBERNETES) $(JENKINS)
 
 # $ make info
 info:
