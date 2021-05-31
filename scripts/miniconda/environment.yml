@@ -3,11 +3,10 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python==3.8.*
-  - pip
-  - bumpversion
-  - conda-pack
-  - jupyterlab
-  - spyder<5
-  - pip:
-    - parquet-tools==0.2.0
+  - python==3.8.10
+  - pip==21.1.2
+  - bumpversion==0.5.3
+  - conda-pack==0.6.0
+  - jupyterlab==3.0.16
+  - spyder==4.2.5
+  
