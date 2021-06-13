@@ -36,13 +36,13 @@ select opt in "${options[@]}"; do
             if [ -z "$k8s_cpus" ]; then
                 k8s_cpus='2'
             fi
-            read -p 'Memory per node [4g]: ' k8s_memory
+            read -p 'Memory per node [8g]: ' k8s_memory
             if [ -z "$k8s_memory" ]; then
-                k8s_memory='4g'
+                k8s_memory='8g'
             fi
-            read -p 'Disk size per node [8g]: ' k8s_disk_size
+            read -p 'Disk size per node [12g]: ' k8s_disk_size
             if [ -z "$k8s_disk_size" ]; then
-                k8s_disk_size='8g'
+                k8s_disk_size='12g'
             fi
             minikube start \
                 --addons metrics-server --addons dashboard \

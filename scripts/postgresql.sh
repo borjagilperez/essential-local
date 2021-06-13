@@ -19,7 +19,10 @@ select opt in "${options[@]}"; do
             ;;
 
         "Install GUIs")
-            sudo snap install dbeaver-ce
+            wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
+            echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+            sudo apt-get update
+            sudo apt-get install -y dbeaver-ce
 
             break
             ;;
@@ -60,7 +63,7 @@ select opt in "${options[@]}"; do
             if [ -z "$host" ]; then
                 host='localhost'
             fi
-            read -p 'User (will be hidden) [postgres]: ' -s user && echo ''
+            read -p 'User [postgres]: ' user
             if [ -z "$user" ]; then
                 user='postgres'
             fi

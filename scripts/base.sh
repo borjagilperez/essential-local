@@ -66,7 +66,7 @@ select opt in "${options[@]}"; do
 
         "Essential GUI, install")
             sudo apt-get install -y firefox firefox-locale-es gnome-disk-utility gparted pavucontrol redshift-gtk
-            sudo apt-get install -y geany gitg terminator
+            sudo apt-get install -y gitg terminator
             sudo snap install chromium
             sudo snap install zotero-snap
             sudo snap install code --classic

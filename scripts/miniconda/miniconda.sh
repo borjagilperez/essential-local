@@ -22,7 +22,8 @@ select opt in "${options[@]}"; do
             eval "$($HOME/miniconda/bin/conda shell.bash hook)"
             conda init bash
             conda config --add channels conda-forge
-            conda update -y --all
+            conda update -y -n base conda
+            #conda update -y -n base --all
             conda env update -f ./scripts/miniconda/environment.yml
             echo -e '===========\nRun the following command to restart environment variables: $ source $HOME/.bashrc\n==========='
 
@@ -34,8 +35,9 @@ select opt in "${options[@]}"; do
             conda activate base && conda info --envs
             #conda env update --prune -f ./scripts/miniconda/environment.yml
             pip uninstall -y $(conda list | grep 'pypi' | awk -F' ' '{print $1}' | sed -E ':a;N;$!ba;s/\n/ /g')
-            echo 'Installing revision 1, please wait.'
-            conda install -y --revision 1
+            echo 'Installing revision 0, please wait.'
+            conda install -y --revision 0
+            conda update -y -n base conda
             conda env update -f ./scripts/miniconda/environment.yml
             conda clean -y --all
             echo -e "\nYou can check revisions running \$ conda list --revisions"

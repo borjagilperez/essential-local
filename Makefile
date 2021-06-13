@@ -8,7 +8,7 @@ POSTGRESQL = postgresql
 MINICONDA = miniconda
 DOCKER = docker
 VAULT = vault-local vault-external
-KUBERNETES = k8s-common minikube k8s-aws
+KUBERNETES = k8s-common k8s-minikube k8s-aws
 JENKINS = jenkins
 .PHONY: info $(GIT) $(BASE) $(POSTGRESQL) $(MINICONDA) $(DOCKER) $(VAULT) $(KUBERNETES) $(JENKINS)
 
@@ -53,8 +53,8 @@ vault-external:
 # $ make k8s-common
 k8s-common:
 	@bash ./scripts/kubernetes/kubernetes.sh
-# $ make minikube
-minikube:
+# $ make k8s-minikube
+k8s-minikube:
 	@bash ./scripts/kubernetes/minikube.sh
 # $ make k8s-aws
 k8s-aws:
