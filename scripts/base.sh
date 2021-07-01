@@ -65,13 +65,28 @@ select opt in "${options[@]}"; do
             ;;
 
         "Essential GUI, install")
-            sudo apt-get install -y firefox firefox-locale-es gnome-disk-utility gparted pavucontrol redshift-gtk
-            sudo apt-get install -y gitg terminator
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+
+            wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
+            echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+
+            sudo apt-get update
+            sudo apt-get install -y dbeaver-ce firefox firefox-locale-es gitg gnome-disk-utility google-chrome-stable gparted pavucontrol redshift-gtk terminator
+
+            wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
+            tar -xvzf geckodriver-v0.29.1-linux64.tar.gz && rm ./geckodriver-v0.29.1-linux64.tar.gz
+            sudo chmod +x geckodriver && sudo mv geckodriver /usr/bin && sudo chown root:root /usr/bin/geckodriver
+
+            wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip && rm ./chromedriver_linux64.zip
+            sudo mv chromedriver /usr/bin && sudo chown root:root /usr/bin/chromedriver && sudo chmod +x /usr/bin/chromedriver
+
             sudo snap install chromium
-            sudo snap install zotero-snap
             sudo snap install code --classic
-            sudo snap install intellij-idea-community --classic
-            sudo snap install pycharm-community --classic
+            sudo snap install intellij-idea-community --classic && sudo snap install pycharm-community --classic
+            sudo snap install zotero-snap
+            
             sudo update-alternatives --config x-www-browser
             sudo update-alternatives --config x-terminal-emulator
 

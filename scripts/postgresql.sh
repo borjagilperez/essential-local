@@ -3,7 +3,6 @@
 PS3="Please select your choice: "
 options=(
     "Install" \
-    "Install GUIs" \
     "Local PostgreSQL, setting password for the postgres user" \
     "PostgreSQL shell" \
     "PostGis, enable features on a database" \
@@ -14,15 +13,6 @@ select opt in "${options[@]}"; do
         "Install")
             sudo apt-get install -y postgresql postgresql-contrib
             sudo apt-get install -y postgis
-
-            break
-            ;;
-
-        "Install GUIs")
-            wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
-            echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
-            sudo apt-get update
-            sudo apt-get install -y dbeaver-ce
 
             break
             ;;
